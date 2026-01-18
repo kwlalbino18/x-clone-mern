@@ -12,13 +12,14 @@ import commentRoutes from "./routes/comment.route.js"
 import NotificationRoutes from "./models/notification.model.js";
 //este import es para solucionar un problema de dns en windows
 import dns from "node:dns/promises";
-
+import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
 //creamos la funcion express
 const app = express();
 app.use(cors())
 app.use(express.json())
 
 app.use(clerkMiddleware());
+app.use(arcjetMiddleware);
 
 //conexion a la base de datos
 //solucionar problema de dns en windows
